@@ -24,10 +24,9 @@ class PlayerChooserScreen : AppCompatActivity() {
         setContentView(R.layout.activity_player_chooser_screen)
 
 
-//        if (intent.extras?.getBoolean("cpu") != null) {
-
+        if (intent.extras?.getBoolean("cpu") != null) {
             cpu = intent.extras!!.getBoolean("cpu")
-//        }
+        }
         spinner1 = findViewById(R.id.sp_player1)
         spinner2 = findViewById(R.id.sp_player2)
         popularSpinners()
