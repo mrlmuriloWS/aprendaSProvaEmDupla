@@ -16,8 +16,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btSair = findViewById(R.id.bt_sair)
+
         btSair.setOnClickListener{
             finish()
-        }   
+        }
+
+
     }
+
 }
