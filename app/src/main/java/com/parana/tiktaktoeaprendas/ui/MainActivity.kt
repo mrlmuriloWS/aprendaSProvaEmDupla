@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 //Método para popular os jogadores da DataBase
         populaDataBaseUser()
+       
 
 
     }
