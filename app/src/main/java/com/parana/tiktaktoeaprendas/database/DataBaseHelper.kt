@@ -3,7 +3,8 @@ package com.parana.tiktaktoeaprendas.database
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-gu
+import android.util.Log
+
 class DataBaseHelper(context: Context): SQLiteOpenHelper(
 
     context, "aprendas.db", null, 1
@@ -17,8 +18,11 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(
                 ");"
         try{
             db?.execSQL( sql )
+//            db?.execSQL("INSERT INTO alunos VALUES(null, 'Gustavo', 0);")
+            Log.i("info_db","Sucesso ao criar a Tabela")
         }catch (e: Exception){
             e.printStackTrace()
+            Log.i("info_db","Erro ao criar a Tabela")
         }
     }
 
