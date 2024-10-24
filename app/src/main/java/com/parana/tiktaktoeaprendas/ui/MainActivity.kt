@@ -2,6 +2,7 @@ package com.parana.tiktaktoeaprendas.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.parana.tiktaktoeaprendas.R
@@ -40,12 +41,21 @@ class MainActivity : AppCompatActivity() {
         btSair.setOnClickListener {
             finish()
         }
-
+//Método para popular os jogadores da DataBase
         populaDataBaseUser()
+       
+
+
     }
 
     private fun populaDataBaseUser() {
         try {
+
+//            bancoDados.readableDatabase.execSQL(
+//                "SELECT COUNT id FROM alunos;"
+//            )
+
+
             bancoDados.writableDatabase.execSQL(
                 "INSERT INTO alunos VALUES(null, 'Gustavo', 0);"
             )
@@ -68,5 +78,7 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
+
 
 }

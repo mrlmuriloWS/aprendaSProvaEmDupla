@@ -16,17 +16,22 @@ class DataBaseHelper(context: Context): SQLiteOpenHelper(
                 "nome varchar(100)," +
                 "pontos int" +
                 ");"
+
         try{
             db?.execSQL( sql )
+
 //            db?.execSQL("INSERT INTO alunos VALUES(null, 'Gustavo', 0);")
             Log.i("info_db","Sucesso ao criar a Tabela")
         }catch (e: Exception){
             e.printStackTrace()
             Log.i("info_db","Erro ao criar a Tabela")
         }
+
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         TODO("Not yet implemented")
     }
+
+
 }
