@@ -1,6 +1,7 @@
 package com.parana.tiktaktoeaprendas.ui
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,17 +12,17 @@ class GameActivity : AppCompatActivity() {
     private lateinit var tvNome1: TextView
     private lateinit var tvNome2: TextView
 
-    private lateinit var bt00: ImageButton
-    private lateinit var bt01: ImageButton
-    private lateinit var bt02: ImageButton
+    private lateinit var bt00: Button
+    private lateinit var bt01: Button
+    private lateinit var bt02: Button
 
-    private lateinit var bt10: ImageButton
-    private lateinit var bt11: ImageButton
-    private lateinit var bt12: ImageButton
+    private lateinit var bt10: Button
+    private lateinit var bt11: Button
+    private lateinit var bt12: Button
 
-    private lateinit var bt20: ImageButton
-    private lateinit var bt21: ImageButton
-    private lateinit var bt22: ImageButton
+    private lateinit var bt20: Button
+    private lateinit var bt21: Button
+    private lateinit var bt22: Button
 
     var player1Turn = true
 
@@ -49,39 +50,39 @@ class GameActivity : AppCompatActivity() {
 
 
         bt00.setOnClickListener {
-            bt00.setSou(R.drawable.baseline_circle_24)
+            bt00.text = "x"
         }
 
         bt01.setOnClickListener {
-
+            bt01.text = "x"
         }
 
         bt02.setOnClickListener {
-
+            bt02.text = "x"
         }
 
         bt10.setOnClickListener {
-
+            bt10.text = "x"
         }
 
         bt11.setOnClickListener {
-
+            bt11.text = "x"
         }
 
         bt12.setOnClickListener {
-
+            bt12.text = "x"
         }
 
         bt20.setOnClickListener {
-
+            bt20.text = "x"
         }
 
         bt21.setOnClickListener {
-
+            bt21.text = "x"
         }
 
         bt22.setOnClickListener {
-
+            bt22.text = "x"
         }
 
 
