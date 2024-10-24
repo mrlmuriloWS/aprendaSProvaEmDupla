@@ -46,19 +46,24 @@ class PlayerChooserScreen : AppCompatActivity() {
         popularSpinners()
 
         btJogar.setOnClickListener {
-
         }
+
     }
 
     fun popularSpinners() {
         //(Esperando ficar pronto o banco para fazer os inserts dos itens)
 
-        //Caso seja player x cpu ele remove o botão
+        for(i in 0 until  listaAlunos.size ) {
+             listaPlayers.add(listaAlunos.get(i).nome)
 
-        spinner1.adapter = ArrayAdapter(
-            this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-            listaPlayers
-        )
+        }
+            //Caso seja player x cpu ele remove o botão
+
+            spinner1.adapter = ArrayAdapter(
+                this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                listaPlayers
+            )
+
 
         //Configura spinner para caso seja CPU
         if (cpu) {
