@@ -1,15 +1,18 @@
 package com.parana.tiktaktoeaprendas.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.parana.tiktaktoeaprendas.GameActivity
 import com.parana.tiktaktoeaprendas.R
 import com.parana.tiktaktoeaprendas.model.Aluno
 
@@ -46,6 +49,23 @@ class PlayerChooserScreen : AppCompatActivity() {
         popularSpinners()
 
         btJogar.setOnClickListener {
+            jogar()
+        }
+
+    }
+
+    private fun jogar() {
+        val intent = Intent(this@PlayerChooserScreen, GameActivity::class.java)
+
+        if (cpu) {
+            //Utilizaremos o array id 7 para identificar q é a CPU
+            if (spinner1.selectedItemPosition != 0) {
+                intent.putExtra("player2", 7)
+                intent.putExtra("player1", spinner1.selectedItemPosition)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Por favor, selecione um jogador", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
@@ -53,16 +73,14 @@ class PlayerChooserScreen : AppCompatActivity() {
     fun popularSpinners() {
         //(Esperando ficar pronto o banco para fazer os inserts dos itens)
 
-        for(i in 0 until  listaAlunos.size ) {
-             listaPlayers.add(listaAlunos.get(i).nome)
+        for (i in 0 until listaAlunos.size) {
+            listaPlayers.add(listaAlunos.get(i).nome)
 
         }
-            //Caso seja player x cpu ele remove o botão
-
-            spinner1.adapter = ArrayAdapter(
-                this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                listaPlayers
-            )
+        //Caso seja player x cpu ele remove o botão
+        spinner1.adapter = ArrayAdapter(
+            this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaPlayers
+        )
 
 
         //Configura spinner para caso seja CPU
@@ -70,8 +88,7 @@ class PlayerChooserScreen : AppCompatActivity() {
             spinner2.visibility = View.GONE
         } else {
             spinner2.adapter = ArrayAdapter(
-                this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                listaPlayers
+                this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaPlayers
             )
         }
     }
