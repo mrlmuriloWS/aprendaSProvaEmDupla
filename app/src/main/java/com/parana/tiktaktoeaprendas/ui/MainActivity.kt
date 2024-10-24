@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.parana.tiktaktoeaprendas.R
+import com.parana.tiktaktoeaprendas.database.DataBaseHelper
 
 class MainActivity : AppCompatActivity() {
 
+    private val bancoDados by lazy{
+        DataBaseHelper(this)
+    }
     private lateinit var btSair: Button
     private lateinit var btPvp: Button
     private lateinit var btPvCpu: Button
@@ -37,6 +41,32 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        populaDataBaseUser()
+    }
+
+    private fun populaDataBaseUser() {
+        try {
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Gustavo', 0);"
+            )
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Roberto', 0);"
+            )
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Felipe', 0);"
+            )
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Murilo', 0);"
+            )
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Eduardo', 0);"
+            )
+            bancoDados.writableDatabase.execSQL(
+                "INSERT INTO alunos VALUES(null, 'Gabriel', 0);"
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 }
