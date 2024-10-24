@@ -5,14 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.parana.tiktaktoeaprendas.GameActivity
 import com.parana.tiktaktoeaprendas.R
 import com.parana.tiktaktoeaprendas.model.Aluno
 
@@ -56,27 +51,32 @@ class PlayerChooserScreen : AppCompatActivity() {
 
     private fun jogar() {
         val intent = Intent(this@PlayerChooserScreen, GameActivity::class.java)
-
         if (cpu) {
-            //Utilizaremos o array id 7 para identificar q é a CPU
             if (spinner1.selectedItemPosition != 0) {
-                intent.putExtra("player2", 7)
                 intent.putExtra("player1", spinner1.selectedItemPosition)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Por favor, selecione um jogador", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Por favor, selecione o jogador", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            if (spinner1.selectedItemPosition != 0 && spinner2.selectedItemPosition != 0) {
+                intent.putExtra("player1", spinner1.selectedItemPosition)
+                intent.putExtra("player2", spinner2.selectedItemPosition)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Por favor, selecione os jogadores corretamente", Toast.LENGTH_LONG).show()
             }
         }
-
     }
+
 
     fun popularSpinners() {
         //(Esperando ficar pronto o banco para fazer os inserts dos itens)
 
         for (i in 0 until listaAlunos.size) {
             listaPlayers.add(listaAlunos.get(i).nome)
-
         }
+
         //Caso seja player x cpu ele remove o botão
         spinner1.adapter = ArrayAdapter(
             this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaPlayers
@@ -91,6 +91,5 @@ class PlayerChooserScreen : AppCompatActivity() {
                 this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaPlayers
             )
         }
-    }
 
-}
+    }
