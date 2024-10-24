@@ -61,10 +61,16 @@ class PlayerChooserScreen : AppCompatActivity() {
         } else {
             if (spinner1.selectedItemPosition != 0 && spinner2.selectedItemPosition != 0) {
                 intent.putExtra("player1", spinner1.selectedItemPosition)
+                intent.putExtra("player1Nome", spinner1.selectedItem.toString())
                 intent.putExtra("player2", spinner2.selectedItemPosition)
+                intent.putExtra("player2Nome", spinner2.selectedItem.toString())
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Por favor, selecione os jogadores corretamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this,
+                    "Por favor, selecione os jogadores corretamente",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -73,6 +79,7 @@ class PlayerChooserScreen : AppCompatActivity() {
     fun popularSpinners() {
         //(Esperando ficar pronto o banco para fazer os inserts dos itens)
 
+        //Popula lista de String de alunos
         for (i in 0 until listaAlunos.size) {
             listaPlayers.add(listaAlunos.get(i).nome)
         }
@@ -93,3 +100,5 @@ class PlayerChooserScreen : AppCompatActivity() {
         }
 
     }
+
+}
